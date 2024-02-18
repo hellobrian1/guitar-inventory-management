@@ -1,6 +1,7 @@
 package c322spring2024homework2.c322spring2024homework2.repository;
 
 import c322spring2024homework2.c322spring2024homework2.model.GuitarData;
+import org.springframework.stereotype.Repository;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
+@Repository
 public class InventoryRepository {
 
     public InventoryRepository() {

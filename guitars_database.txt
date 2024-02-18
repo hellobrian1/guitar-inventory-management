@@ -1,0 +1,8 @@
+007,500.00,Fender,Dreadnought,Acoustic,Mahogany,Pine
+100,800.00,Fender,King,Bass,Birch,Maple
+024,100.00,Pike,Aero,Electric,Maple,Pine
+
+007,500.00,Fender,Dreadnought,Acoustic,Mahogany,Pine
+100,800.00,Fender,King,Bass,Birch,Maple
+007,500.00,Fender,Dreadnought,Acoustic,Mahogany,Pine
+100,800.00,Fender,King,Bass,Birch,Maple

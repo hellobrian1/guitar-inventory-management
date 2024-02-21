@@ -35,9 +35,10 @@ public class InventoryController{
     @PostMapping
     public boolean add(@RequestBody GuitarData data){
         try{
-            return InventoryRepository.add(data);
+            System.out.println("Adding guitar to inventory: " + data.serialNumber());
+            return inventoryRepository.add(data);
         } catch (IOException e){
-            return false;
+            throw new RuntimeException(e);
         }
     }
 

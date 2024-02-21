@@ -1,6 +1,7 @@
 package c322spring2024homework2.c322spring2024homework2.repository;
 
 import c322spring2024homework2.c322spring2024homework2.model.GuitarData;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.io.*;
@@ -14,7 +15,7 @@ import java.util.List;
 
 
 
-@Repository
+@Component
 public class InventoryRepository {
 
     public InventoryRepository() {
@@ -32,27 +33,7 @@ public class InventoryRepository {
     private static final String NEW_LINE = System.lineSeparator();
 
 
-    public void addGuitar(String serialNum, double price, String builder, String model, String type, String backWood, String topWood) {
-        try {
-            GuitarData g = new GuitarData(serialNum, price, builder, model, type, backWood, topWood);
 
-            FileWriter w = new FileWriter("guitars_database.txt", true);
-
-
-            String guitarInfo = String.format("%s,%.2f,%s,%s,%s,%s,%s\n",
-                    g.getSerialNumber(), g.getPrice(), g.getBuilder(),
-                    g.getModel(), g.getType(), g.getBackWood(), g.getTopWood());
-
-            w.write(guitarInfo);
-
-            w.close();
-
-
-            System.out.println("Guitar added to database");
-        } catch (IOException e) {
-            System.err.println("Error writing to file: " + e.getMessage());
-        }
-    }
 
     private static void appendToFile(Path path, String content) throws IOException {
         Files.write(path,
@@ -61,11 +42,12 @@ public class InventoryRepository {
                 StandardOpenOption.APPEND);
     }
 
-    public static boolean add(GuitarData guitarData) throws IOException{
+    public boolean add(GuitarData guitarData) throws IOException{
 
-        Path path = Paths.get("guitars_database.txt");
+        Path path = Paths.get(DATABASE_NAME);
         String data = guitarData.toLine();
-        appendToFile(path, data);
+        System.out.println(data);
+        appendToFile(path, data + NEW_LINE);
         return true;
 
     }
@@ -134,7 +116,7 @@ public class InventoryRepository {
         List<GuitarData> guitars = findAll();
         List<GuitarData> result = new ArrayList<>();
         for(GuitarData guitar : guitars) {
-            if (type != null && !guitar.getType().equalsIgnoreCase(type)) {
+            if (type != null && !guitar.type().equalsIgnoreCase(type)) {
                 continue;
             }
             result.add(guitar);
@@ -180,7 +162,7 @@ public class InventoryRepository {
     public GuitarData find(String serialNumber) throws IOException {
         List<GuitarData> guitars = findAll();
         for(GuitarData guitar : guitars) {
-            if (guitar.getSerialNumber().equals(serialNumber)) {
+            if (guitar.serialNumber().equals(serialNumber)) {
                 return guitar;
             }
         }

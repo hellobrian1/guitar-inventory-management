@@ -149,6 +149,7 @@ public class InventoryRepository {
 //        }
 //        return result;
 //    }
+
     public List<GuitarData> findAll() throws IOException {
         List<GuitarData> result = new ArrayList<>();
         Path path = Paths.get(DATABASE_NAME);

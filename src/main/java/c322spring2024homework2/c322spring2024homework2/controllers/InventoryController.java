@@ -62,27 +62,6 @@ public class InventoryController{
         }
     }
 
-//    @GetMapping("/find")
-//    public GuitarData getGuitar(@RequestParam String serialNumber) {
-//        try {
-//            FileReader r = new FileReader("guitars_database.txt");
-//            BufferedReader bufferedReader = new BufferedReader(r);
-//
-//            String line;
-//            while ((line = bufferedReader.readLine()) != null) {
-//                String[] guitarData = line.split(",");
-//                if (guitarData[0].equals(serialNumber)) {
-//                    return new GuitarData(guitarData[0], Double.parseDouble(guitarData[1]), guitarData[2],
-//                            guitarData[3], guitarData[4], guitarData[5], guitarData[6]);
-//                }
-//            }
-//            bufferedReader.close();
-//            r.close();
-//            return null;
-//        } catch (IOException e) {
-//            System.err.println("Error reading file: " + e.getMessage());
-//            return null;
-//        }
-//    }
+
 
 }
